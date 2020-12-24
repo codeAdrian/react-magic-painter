@@ -7,11 +7,8 @@ export const BrushPreview: React.FC<any> = ({ currentColor, currentWidth }) => {
     height: `${currentWidth}px`,
   };
   return (
-    <>
-      <strong>Brush preview</strong>
-      <div className="preview">
-        <div style={styles} className="preview__brush"></div>
-      </div>
-    </>
+    <div className="preview">
+      <div style={styles} className="preview__brush"></div>
+    </div>
   );
 };

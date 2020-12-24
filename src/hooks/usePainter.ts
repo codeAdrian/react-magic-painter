@@ -140,6 +140,8 @@ export const usePainter = () => {
   }, []);
 
   const handleEraserMode = (e: any) => {
+    autoWidth.current = false;
+    setIsAutoWidth(false);
     setIsRegularMode(true);
     isEraserMode.current = true;
   };
