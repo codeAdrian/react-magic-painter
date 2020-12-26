@@ -1,6 +1,11 @@
 import React from "react";
 
-export const Intro: React.FC<any> = ({ init, isReady }) => {
+interface Props {
+  init?: any;
+  isReady?: boolean;
+}
+
+export const Intro: React.FC<Props> = ({ init, isReady }) => {
   return (
     <header className={isReady ? "hidden" : ""}>
       <div>

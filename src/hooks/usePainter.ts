@@ -5,6 +5,7 @@ export const usePainter = () => {
   const [isReady, setIsReady] = useState(false);
   const [isRegularMode, setIsRegularMode] = useState(true);
   const [isAutoWidth, setIsAutoWidth] = useState(false);
+  const [isEraser, setIsEraser] = useState(false);
 
   const [currentColor, setCurrentColor] = useState("#000000");
   const [currentWidth, setCurrentWidth] = useState(50);
@@ -114,11 +115,14 @@ export const usePainter = () => {
   const handleRegularMode = useCallback(() => {
     setIsRegularMode(true);
     isEraserMode.current = false;
+    setIsEraser(false);
     isRegularPaintMode.current = true;
   }, []);
+
   const handleSpecialMode = useCallback(() => {
     setIsRegularMode(false);
     isEraserMode.current = false;
+    setIsEraser(false);
     isRegularPaintMode.current = false;
   }, []);
 
@@ -144,6 +148,7 @@ export const usePainter = () => {
     setIsAutoWidth(false);
     setIsRegularMode(true);
     isEraserMode.current = true;
+    setIsEraser(true);
   };
 
   const setCurrentSaturation = (e: any) => {
@@ -161,7 +166,6 @@ export const usePainter = () => {
   };
 
   const setAutoWidth = (e: any) => {
-    console.log(e.currentTarget.checked);
     autoWidth.current = e.currentTarget.checked;
     setIsAutoWidth(e.currentTarget.checked);
 
@@ -180,6 +184,7 @@ export const usePainter = () => {
       currentColor,
       isRegularMode,
       isAutoWidth,
+      isEraser,
     },
     {
       init,
