@@ -7,8 +7,8 @@ interface Props {
 
 export const Intro: React.FC<Props> = ({ init, isReady }) => {
   return (
-    <header className={isReady ? "hidden" : ""}>
-      <div>
+    <header className={isReady ? "hidden intro" : "intro"}>
+      <div className="intro__content">
         <h1>Magic Painter</h1>
         <button onClick={init} className="blob-btn">
           <span className="blob-text">Start painting</span>
