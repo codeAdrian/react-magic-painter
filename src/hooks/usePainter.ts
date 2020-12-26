@@ -89,19 +89,19 @@ export const usePainter = () => {
     [drawOnCanvas, dynamicLineWidth],
   );
 
+  const stopDrawing = useCallback(() => {
+    isDrawing.current = false;
+  }, []);
+
   const init = useCallback(() => {
     ctx.current = canvas?.current?.getContext("2d");
     if (canvas && canvas.current && ctx && ctx.current) {
       canvas.current.addEventListener("mousedown", handleMouseDown);
       canvas.current.addEventListener("mousemove", drawNormal);
-      canvas.current.addEventListener("mouseup", () => {
-        isDrawing.current = false;
-      });
-      canvas.current.addEventListener("mouseout", () => {
-        isDrawing.current = false;
-      });
+      canvas.current.addEventListener("mouseup", stopDrawing);
+      canvas.current.addEventListener("mouseout", stopDrawing);
 
-      canvas.current.width = window.innerWidth - 270;
+      canvas.current.width = window.innerWidth - 196;
       canvas.current.height = window.innerHeight;
 
       ctx.current.strokeStyle = "#000";
@@ -110,7 +110,7 @@ export const usePainter = () => {
       ctx.current.lineWidth = 10;
       setIsReady(true);
     }
-  }, [drawNormal, handleMouseDown]);
+  }, [drawNormal, handleMouseDown, stopDrawing]);
 
   const handleRegularMode = useCallback(() => {
     setIsRegularMode(true);
